@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>구글 뉴스 검색</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
+	</head>
+	<body>
+		<h1>구글 헤드라인 '키워드' 뉴스 검색</h1>
+		아래에 검색 키워드와 갯수를 입력해주세요
+		<form action="/search" method="POST">
+			<input type="text" placeholder="키워드" name="keyword" required>
+			<input type="text" placeholder="갯수" name="limit" style='width:50px' required>
+			<input type="submit" value="검색">
+		</form>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>{{ keyword }} 검색 결과</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='search.css')}}">
+  </head>
+  <body>
+    <h1>구글 뉴스 헤드라인 ' {{ keyword }} ' 키워드 검색 결과</h1>
+    <form action="/send" method="POST","GET">
+      <table style = 'word-break: break-all; height: auto;'>
+        <thead>
+          <tr>
+            <th style = 'width: 40px; text-align: center;'>번호</th>
+            <th>제목</th>
+            <th>바로가기</th>
+            <th style = 'width: 40px;'>선택</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in results %}
+          <tr>
+            <td style = 'text-align: center;'>{{ result['id']}}</td>
+            <td>{{ result['title'] }}</td>
+            <td><a href="{{ result['link'] }}" target="_blank">{{ result['link'] }}</a></td>
+            <td><input type="checkbox" name="selected[]" value="{{ result['id'] }}" id="check{{ result['id'] }}"></td>
+            <input type="hidden" name="url_{{ result['id'] }}" value="{{ result['link'] }}">
+            <input type="hidden" name="title_{{ result['id'] }}" value="{{ result['title'] }}">
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <input type="hidden" name="keyword" value="{{ keyword }}">
+      <br>
+      <input type="text" placeholder="이메일을 입력 @.COM 필수" name="email">
+      <button type="submit">이메일 전송</button>
+    </form>
+  </body>
+</html>
