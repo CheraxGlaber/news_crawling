@@ -11,7 +11,7 @@ from email.mime.multipart import MIMEMultipart
 
 headers={'Content-Type': 'application/json'}
 
-SLACK_URL = 'yout URL'
+SLACK_URL = 'your URL'
 keyword = ''
 
 # 구글 뉴스 메인 URL
